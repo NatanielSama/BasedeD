@@ -8,19 +8,21 @@
     <string name="autor">Autor:</string>
     <string name="editorial">Editorial:</string>
     <string name="precio">Precio:</string>
-    <string name="agregar">Agregar</string>
-    <string name="eliminar">Eliminar</string>
-    <string name="consultar">Consultar</string>
-    <string name="modificar">Modificar</string>
-    <string name="limpiar">Limpiar</string>
+    <string name="agregar">Agregar:</string>
+    <string name="eliminar">Eliminar:</string>
+    <string name="consultar">Consultar:</string>
+    <string name="modificar">Modificar:</string>
+    <string name="limpiar">Limpiar:</string>
 
-    <string name="camposv">Llene todos los campos</string>
-    <string name="libron">Se agrego un nuevo libro</string>
-    <string name="libroen">Libro encontrado</string>
-    <string name="librono">No se encontro el libro</string>
-    <string name="ingreco">Ingrese un codigo</string>
-    <string name="borro">Se borro el libro</string>
-    <string name="nolibro">No existe el libro</string>
-    <string name="modificado">Se modificaron los datos del libro</string>
-    <string name="llenar">Llene todos los campos</string>
+    <string name="camposv"> Llene todos los campos</string>
+    <string name="libron"> Se agregó un nuevo libro</string>
+    <string name="libroen"> Libro encontrado</string>
+    <string name="librono">  Libro no encontrado</string>
+    <string name="ingreco"> Ingrese un código</string>
+    <string name="borro"> Se borró el libro</string>
+    <string name="nolibro"> El libro no existe</string>
+    <string name="modificado"> Los datos del libro se modificaron</string>
+    <string name="llenar"> Llene todos los campos</string>
+
+
 </resources>

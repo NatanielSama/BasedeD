@@ -95,29 +95,34 @@ public class MainActivity extends ActionBarActivity {
     esta vacio
     */
         try {
-        BasedDatos base = new BasedDatos(this, "libros", null, 1);
-        SQLiteDatabase datos = base.getWritableDatabase();
-        String vcodigo = codigo.getText().toString();
+            if (codigo.getText().length()==0 ) {
+
+                Toast.makeText(this, R.string.ingreco, Toast.LENGTH_SHORT).show();
+            }
+            else {
+                BasedDatos base = new BasedDatos(this, "libros", null, 1);
+                SQLiteDatabase datos = base.getWritableDatabase();
+                String vcodigo = codigo.getText().toString();
          /*
             los datos de la consulta se guardan en un array y se muestrar en los edittext
              */
-            Cursor cdatos = datos.rawQuery("select nombre, autor, editorial, precio from libros where codigo=" + vcodigo, null);
-            if (cdatos.moveToFirst()) {
-                nombre.setText(cdatos.getString(0));
-                autor.setText(cdatos.getString(1));
-                editorial.setText(cdatos.getString(2));
-                precio.setText(cdatos.getString(3));
+                Cursor cdatos = datos.rawQuery("select nombre, autor, editorial, precio from libros where codigo=" + vcodigo, null);
+                if (cdatos.moveToFirst()) {
+                    nombre.setText(cdatos.getString(0));
+                    autor.setText(cdatos.getString(1));
+                    editorial.setText(cdatos.getString(2));
+                    precio.setText(cdatos.getString(3));
 
-                Toast.makeText(this, R.string.libroen, Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(this, R.string.librono, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, R.string.libroen, Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(this, R.string.librono, Toast.LENGTH_SHORT).show();
+                }
+                datos.close();
             }
-            datos.close();
-
         }
         catch (Exception ex)
         {
-            Toast.makeText(this, R.string.ingreco, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Error: "+ ex.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -127,82 +132,92 @@ public class MainActivity extends ActionBarActivity {
     public void eliminar(View v) {
 
           /*
-    Agregue un try para capturar el error que mandaba la aplicación cuando se quiere ejecutar la operación de eliminar y el edittext del codigo(del libro)
+    Agregue un try y una condicion para capturar el error que mandaba la aplicación cuando se quiere ejecutar la operación de eliminar y el edittext del codigo(del libro)
     esta vacio
     */
-        try{
-        BasedDatos base = new BasedDatos(this, "libros", null, 1);
-        SQLiteDatabase datos = base.getWritableDatabase();
-        String vcodigo = codigo.getText().toString();
+        try {
+            if (codigo.getText().length() == 0) {
+
+
+                Toast.makeText(this, R.string.ingreco, Toast.LENGTH_SHORT).show();
+            } else {
+                BasedDatos base = new BasedDatos(this, "libros", null, 1);
+                SQLiteDatabase datos = base.getWritableDatabase();
+                String vcodigo = codigo.getText().toString();
         /*
             se ejecuta la operacion eliminar
              */
-        int num = datos.delete("libros", "codigo=" + vcodigo, null);
-        datos.close();
+                int num = datos.delete("libros", "codigo=" + vcodigo, null);
+                datos.close();
 
-        codigo.setText("");
-        nombre.setText("");
-        autor.setText("");
-        editorial.setText("");
-        precio.setText("");
+                codigo.setText("");
+                nombre.setText("");
+                autor.setText("");
+                editorial.setText("");
+                precio.setText("");
 
-        if (num == 1) {
-            Toast.makeText(this, R.string.borro, Toast.LENGTH_SHORT).show();
-        }
-        else {
-            Toast.makeText(this, R.string.nolibro, Toast.LENGTH_SHORT).show();
-        }
-
-        }
-        catch (Exception ex)
-        {
-            Toast.makeText(this, R.string.ingreco, Toast.LENGTH_SHORT).show();
-        }
+                if (num == 1) {
+                    Toast.makeText(this, R.string.borro, Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(this, R.string.nolibro, Toast.LENGTH_SHORT).show();
+                }
+            }
+            }
+            catch(Exception ex)
+            {
+                Toast.makeText(this, "Error: "+ ex.getMessage(), Toast.LENGTH_SHORT).show();
+            }
     }
     /*
         El siguiente codigo tiene la funcion de modificar los datos en la base de datos
         */
     public void modificar (View v) {
         try{
+            if (codigo.getText().length()==0 || nombre.getText().length()==0  || editorial.getText().length()==0  || autor.getText().length()==0 || precio.getText().length()==0 ) {
+
+
+                Toast.makeText(this, R.string.camposv, Toast.LENGTH_SHORT).show();
+            }
+            else {
              /*
     Agregue un try para capturar el error que mandaba la aplicación cuando se quiere ejecutar la operación de modificar y el edittext del codigo(del libro)
     esta vacio
     */
-        BasedDatos base = new BasedDatos(this, "libros", null, 1);
-        SQLiteDatabase datos = base.getWritableDatabase();
+                BasedDatos base = new BasedDatos(this, "libros", null, 1);
+                SQLiteDatabase datos = base.getWritableDatabase();
          /*
             declaracion de variables que se usaran para ingresar los datos que se modificaran de la base de datos
              */
-        String vcodigo = codigo.getText().toString();
-        String vnombre = nombre.getText().toString();
-        String vautor = autor.getText().toString();
-        String veditorial = editorial.getText().toString();
-        String vprecio = precio.getText().toString();
+                String vcodigo = codigo.getText().toString();
+                String vnombre = nombre.getText().toString();
+                String vautor = autor.getText().toString();
+                String veditorial = editorial.getText().toString();
+                String vprecio = precio.getText().toString();
 
 
-            ContentValues registrar = new ContentValues();
+                ContentValues registrar = new ContentValues();
 
-            registrar.put("codigo", vcodigo);
-            registrar.put("nombre", vnombre);
-            registrar.put("autor", vautor);
-            registrar.put("editorial", veditorial);
-            registrar.put("precio", vprecio);
+                registrar.put("codigo", vcodigo);
+                registrar.put("nombre", vnombre);
+                registrar.put("autor", vautor);
+                registrar.put("editorial", veditorial);
+                registrar.put("precio", vprecio);
              /*
             se ejecuta la modificacion de los datos
              */
-            int num = datos.update("libros", registrar, "codigo=" + vcodigo, null);
-            datos.close();
+                int num = datos.update("libros", registrar, "codigo=" + vcodigo, null);
+                datos.close();
 
-            if (num == 1) {
-                Toast.makeText(this, R.string.modificado, Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(this, R.string.nolibro, Toast.LENGTH_SHORT).show();
+                if (num == 1) {
+                    Toast.makeText(this, R.string.modificado, Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(this, R.string.nolibro, Toast.LENGTH_SHORT).show();
+                }
             }
-
         }
         catch (Exception ex)
         {
-            Toast.makeText(this, R.string.llenar, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Error: "+ ex.getMessage(), Toast.LENGTH_SHORT).show();
         }
 
     }

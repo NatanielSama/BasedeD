@@ -1,26 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <string name="app_name">Library</string>
     <string name="action_settings">Settings</string>
     <string name="codigo">Code:</string>
-    <string name="name">Book Name:</string>
+    <string name="name">Name of Book:</string>
     <string name="autor">Author:</string>
     <string name="editorial">Editorial:</string>
     <string name="precio">Price:</string>
-    <string name="agregar">Agree</string>
+    <string name="agregar">Add:</string>
     <string name="eliminar">Delete:</string>
-    <string name="consultar">Query</string>
-    <string name="modificar">Update</string>
-    <string name="limpiar">Clear</string>
+    <string name="consultar">Browse:</string>
+    <string name="modificar">Update:</string>
+    <string name="limpiar">Clean:</string>
 
-    <string name="camposv">Llene todos los campos</string>
-    <string name="libron">Se agrego un nuevo libro</string>
-    <string name="libroen">Libro encontrado</string>
-    <string name="librono">No se encontro el libro</string>
-    <string name="ingreco">Ingrese un codigo</string>
-    <string name="borro">Se borro el libro</string>
-    <string name="nolibro">No existe el libro</string>
-    <string name="modificado">Se modificaron los datos del libro</string>
-    <string name="llenar">Llene todos los campos</string>
+    <string name="camposv">Fill all fields</string>
+    <string name="libron">A new book is added</string>
+    <string name="libroen">Book Found</string>
+    <string name="librono">Book not found</string>
+    <string name="ingreco">Enter a code</string>
+    <string name="borro">The book is delete</string>
+    <string name="nolibro">The book does not exist</string>
+    <string name="modificado">Data Book modified</string>
+    <string name="llenar">Fill all fields</string>
 </resources>
